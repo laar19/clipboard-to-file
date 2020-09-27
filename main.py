@@ -1,20 +1,19 @@
- # coding: utf-8
+# coding: utf-8
 
 import sys
-from PyQt5 import uic
-from PyQt5 import QtWidgets
+from PyQt5 import uic, QtWidgets
 from PyQt5.Qt import QApplication
 from functions.functions import *
 
-appname = "Clipboard to file"
-authors = ["Luis Acevedo", "<laar@protonmail.com>"]
+appname  = "Clipboard to file"
+authors  = ["Luis Acevedo", "<laar@protonmail.com>"]
 license_ = "Copyright 2020. All code is copyrighted by the respective authors.\n" + appname + " can be redistributed and/or modified under the terms of the GNU GPL versions 3 or by any future license endorsed by " + authors[0] +"." + "\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
 # Spcify user interface location
 if (len(sys.argv) < 2):
-    ventana = "ui/window.ui"        # Default
+    window_ = "ui/window.ui"        # Default
 elif (len(sys.argv) == 2):
-    ventana = sys.argv[1]           # Custon, in order to make and exeutable with pyinstaller
+    window_ = sys.argv[1]           # Custon, in order to make and exeutable with pyinstaller
 else:
     print("Argumento/s inválido/s") # Any other option, error
     sys.exit()
@@ -24,7 +23,7 @@ clipboard_list = list()
 class MyApp(QtWidgets.QMainWindow):
     def __init__(self):
         super(MyApp, self).__init__()
-        uic.loadUi(ventana, self)
+        uic.loadUi(window_, self)
         self.show()
 
         self.clipboard_qtextbrowser = self.findChild(QtWidgets.QTextBrowser, "clipboard_qtextbrowser") # Show selected files from clipboard
