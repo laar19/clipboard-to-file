@@ -1,8 +1,12 @@
 # coding: utf-8
 
 import sys
-from PyQt5 import uic, QtWidgets
-from PyQt5.Qt import QApplication
+
+from PySide2 import QtWidgets
+from PySide2.QtWidgets import QApplication, QDialog
+from PySide2.QtCore import QFile, QObject
+from PySide2.QtUiTools import QUiLoader
+
 from functions.functions import *
 
 appname  = "Clipboard to file"
@@ -11,39 +15,43 @@ license_ = "Copyright 2020. All code is copyrighted by the respective authors.\n
 
 # Spcify user interface location
 if (len(sys.argv) < 2):
-    window_ = "ui/window.ui"        # Default
+    ui_file = "ui/window.ui"        # Default
 elif (len(sys.argv) == 2):
-    window_ = sys.argv[1]           # Custon, in order to make and exeutable with pyinstaller
+    ui_file = sys.argv[1]           # Custom, in order to make and exeutable with pyinstaller
 else:
     print("Argumento/s inválido/s") # Any other option, error
     sys.exit()
 
 clipboard_list = list()
 
-class MyApp(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(MyApp, self).__init__()
-        uic.loadUi(window_, self)
-        self.show()
+class MyApp(QDialog):
+    def __init__(self, ui_file):
+        super().__init__()
+        self.ui_file = QFile(ui_file)
+        self.ui_file.open(QFile.ReadOnly)
 
-        self.clipboard_qtextbrowser = self.findChild(QtWidgets.QTextBrowser, "clipboard_qtextbrowser") # Show selected files from clipboard
+        self.loader = QUiLoader()
+        self.window = self.loader.load(self.ui_file)
+        self.window.show()
 
-        self.btn_save = self.findChild(QtWidgets.QPushButton, "btn_save")       # Save
+        self.clipboard_qtextbrowser = self.window.findChild(QtWidgets.QTextBrowser, "clipboard_qtextbrowser") # Show selected files from clipboard
+
+        self.btn_save = self.window.findChild(QtWidgets.QPushButton, "btn_save")       # Save
         self.btn_save.clicked.connect(self.save_as)
 
-        self.btn_clear = self.findChild(QtWidgets.QPushButton, "btn_clear")     # Clear list button
+        self.btn_clear = self.window.findChild(QtWidgets.QPushButton, "btn_clear")     # Clear list button
         self.btn_clear.clicked.connect(self.clear)
 
-        self.btn_about = self.findChild(QtWidgets.QPushButton, "btn_about")     # About Qt
+        self.btn_about = self.window.findChild(QtWidgets.QPushButton, "btn_about")     # About Qt
         self.btn_about.clicked.connect(self.aboutQt)
 
-        self.btn_authors = self.findChild(QtWidgets.QPushButton, "btn_authors") # Authors
+        self.btn_authors = self.window.findChild(QtWidgets.QPushButton, "btn_authors") # Authors
         self.btn_authors.clicked.connect(self.authors)
 
-        self.btn_license = self.findChild(QtWidgets.QPushButton, "btn_license") # License
+        self.btn_license = self.window.findChild(QtWidgets.QPushButton, "btn_license") # License
         self.btn_license.clicked.connect(self.license_)
 
-        self.btn_exit = self.findChild(QtWidgets.QPushButton, "btn_exit")       # Exit
+        self.btn_exit = self.window.findChild(QtWidgets.QPushButton, "btn_exit")       # Exit
         self.btn_exit.clicked.connect(self.exit)
 
         QApplication.clipboard().dataChanged.connect(self.listen_clipboard)
@@ -79,6 +87,6 @@ class MyApp(QtWidgets.QMainWindow):
 if __name__ == "__main__":    
     print(appname + " Copyright (C) 2020 " + authors[0] +".\nEste programa viene con ABSOLUTAMENTE NINGUNA GARANTÍA.\nEsto es software libre, y le invitamos a redistribuirlo\nbajo ciertas condiciones.\nPor favor, leer el archivo README.")
 
-    app = QtWidgets.QApplication(sys.argv)
-    window = MyApp()
-    app.exec_()
+    app = QApplication(sys.argv)
+    w = MyApp(ui_file)
+    sys.exit(app.exec_())
