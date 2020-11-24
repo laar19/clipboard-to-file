@@ -7,6 +7,10 @@ from PySide2.QtWidgets import QApplication, QDialog
 from PySide2.QtCore import QFile, QObject
 from PySide2.QtUiTools import QUiLoader
 
+# Using PyQt5
+#from PyQt5 import uic, QtWidgets
+#from PyQt5.Qt import QApplication
+
 from functions.functions import *
 
 appname  = "Clipboard to file"
@@ -24,16 +28,24 @@ else:
 
 clipboard_list = list()
 
+#class MyApp(QtWidgets.QMainWindow): # Using PyQt5
 class MyApp(QDialog):
+    #def __init__(self): # Using PyQt5
     def __init__(self, ui_file):
         super().__init__()
         self.ui_file = QFile(ui_file)
         self.ui_file.open(QFile.ReadOnly)
+        
+        # Using PyQty5
+        #super(MyApp, self).__init__()
+        #uic.loadUi(ui_file, self)
+        #self.show()
 
         self.loader = QUiLoader()
         self.window = self.loader.load(self.ui_file)
         self.window.show()
 
+        #self.clipboard_qtextbrowser = self.findChild(QtWidgets.QTextBrowser, "clipboard_qtextbrowser") # Show selected files from clipboard
         self.clipboard_qtextbrowser = self.window.findChild(QtWidgets.QTextBrowser, "clipboard_qtextbrowser") # Show selected files from clipboard
 
         self.btn_save = self.window.findChild(QtWidgets.QPushButton, "btn_save")       # Save
@@ -90,3 +102,8 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     w = MyApp(ui_file)
     sys.exit(app.exec_())
+
+    # Using PyQt5
+    #app = QtWidgets.QApplication(sys.argv)
+    #window = MyApp()
+    #app.exec_()
