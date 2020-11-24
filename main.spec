@@ -3,11 +3,11 @@
 block_cipher = None
 
 
-a = Analysis(['main.py', 'cd', '/home/usuario/Desktop/clipboard-to-file - copia/'],
+a = Analysis(['main.py'],
              pathex=['/home/usuario/Desktop/clipboard-to-file'],
              binaries=[],
              datas=[],
-             hiddenimports=[],
+             hiddenimports=['PySide2.QtXml'],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
