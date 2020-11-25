@@ -23,3 +23,6 @@ Distribuído bajo la GNU General Public License (GPLv3).
 1.- Clonar o descargar este repositorio   
 2.- Dentro de la carpeta del repositorio crear un nuevo entorno virtual: __conda env create -n nombre_entorno -f environment.yml__   
 3.- Ejecutar la aplicación: __python main.py__   
+
+## Binaries
+https://sourceforge.net/projects/clipboard-to-file/
