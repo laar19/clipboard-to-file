@@ -4,25 +4,25 @@
 
 ## Luis Acevedo  <laar@protonmail.com>
 
-## Información técnica:
+## Info:
 
-Desarrollado en python 3.8.5   
-PyQt5 como librería gráfica.   
-Distribuído bajo la GNU General Public License (GPLv3).   
+Python 3.8.5   
+PyQt5.   
+Distributed under the GNU General Public License (GPLv3).   
 
 ## Source:
 
-- *__main.py__* ejecuta la aplicación
+- *__main.py__* launch app
 		
-- *__ui/window.ui__* interfaz gráfica
+- *__ui/window.ui__* user interface
 
-- *__functions/functions.py__* funciones auxiliares
+- *__functions/functions.py__* auxiliary functions
 		
-## Uso:
+## Use:
 ### Anaconda
-1.- Clonar o descargar este repositorio   
-2.- Dentro de la carpeta del repositorio crear un nuevo entorno virtual: __conda env create -n nombre_entorno -f environment.yml__   
-3.- Ejecutar la aplicación: __python main.py__   
+1.- Clone or download this repository   
+2.- Within the repository folder create a new virtual environment: __conda env create -n env_name -f environment.yml__   
+3.- Launch app: __python main.py__   
 
 ## Binaries
 https://sourceforge.net/projects/clipboard-to-file/
