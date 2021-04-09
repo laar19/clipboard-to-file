@@ -7,7 +7,7 @@
 ## Info:
 
 Python 3.8.5   
-PyQt5.   
+PySide 2.   
 Distributed under the GNU General Public License (GPLv3).   
 
 ## Source:
