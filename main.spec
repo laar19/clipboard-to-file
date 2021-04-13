@@ -4,10 +4,10 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['/home/usuario01/pruebas/clipboard-to-file'],
+             pathex=['C:\\Users\\usuario01\\Desktop\\development\\clipboard-to-file'],
              binaries=[],
              datas=[],
-             hiddenimports=['PySide2.QtXml'],
+             hiddenimports=['PySide2.QtXml', 'PySide2.QtGui'],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],

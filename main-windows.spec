@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['C:\\Users\\usuario01\\Desktop\\clipboard-to-file'],
+             pathex=['C:\\Users\\usuario01\\Desktop\\development\\clipboard-to-file'],
              binaries=[],
              datas=[],
              hiddenimports=['PySide2.QtXml', 'PySide2.QtGui'],
@@ -26,6 +26,7 @@ exe = EXE(pyz,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
+          upx_exclude=['qwindows.dll'],
           console=False )
 coll = COLLECT(exe,
                a.binaries,
