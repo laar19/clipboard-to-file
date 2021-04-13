@@ -4,9 +4,12 @@ import sys
 
 from PySide2 import QtWidgets
 from PySide2.QtWidgets import QApplication, QDialog
-from PySide2.QtCore import QFile, QObject, Qt
+from PySide2.QtCore import QFile
+#from PySide2.QtCore import QObject, Qt
 from PySide2.QtUiTools import QUiLoader
-from PySide2.QtGui import QPalette, QColor
+import qdarkstyle
+from qdarkstyle.dark.palette import DarkPalette
+from qdarkstyle.light.palette import LightPalette
 
 # Using PyQt5
 #from PyQt5 import uic, QtWidgets
@@ -26,23 +29,6 @@ elif (len(sys.argv) == 2):
 else:
     print("Argumento/s inválido/s") # Any other option, error
     sys.exit()
-
-default_palette = QPalette()
-# Dark palette
-dark_palette = QPalette()
-dark_palette.setColor(QPalette.Window, QColor(53, 53, 53))
-dark_palette.setColor(QPalette.WindowText, Qt.white)
-dark_palette.setColor(QPalette.Base, QColor(25, 25, 25))
-dark_palette.setColor(QPalette.AlternateBase, QColor(53, 53, 53))
-dark_palette.setColor(QPalette.ToolTipBase, Qt.white)
-dark_palette.setColor(QPalette.ToolTipText, Qt.white)
-dark_palette.setColor(QPalette.Text, Qt.white)
-dark_palette.setColor(QPalette.Button, QColor(53, 53, 53))
-dark_palette.setColor(QPalette.ButtonText, Qt.white)
-dark_palette.setColor(QPalette.BrightText, Qt.red)
-dark_palette.setColor(QPalette.Link, QColor(42, 130, 218))
-dark_palette.setColor(QPalette.Highlight, QColor(42, 130, 218))
-dark_palette.setColor(QPalette.HighlightedText, Qt.black)
 
 clipboard_list = list()
 
@@ -84,7 +70,7 @@ class MyApp(QDialog):
 
         self.btn_change_theme = self.window.findChild(QtWidgets.QPushButton, "btn_change_theme") # License
         self.btn_change_theme.setCheckable(True)
-        self.btn_change_theme.setChecked(True)
+        #self.btn_change_theme.setChecked(True)
         self.btn_change_theme.clicked.connect(self.toggle_theme)
 
         self.btn_exit = self.window.findChild(QtWidgets.QPushButton, "btn_exit")       # Exit
@@ -119,9 +105,9 @@ class MyApp(QDialog):
         
     def toggle_theme(self):
         if not self.btn_change_theme.isChecked():
-            app.setPalette(dark_palette)
+            app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2', palette=DarkPalette))
         else:
-            app.setPalette(default_palette)
+            app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2', palette=LightPalette))
 
     def exit(self):
         sys.exit()
@@ -130,7 +116,9 @@ if __name__ == "__main__":
     print(appname + " Copyright (C) 2020 " + authors[0] +".\nEste programa viene con ABSOLUTAMENTE NINGUNA GARANTÍA.\nEsto es software libre, y le invitamos a redistribuirlo\nbajo ciertas condiciones.\nPor favor, leer el archivo README.")
 
     app = QApplication(sys.argv)
-    app.setPalette(dark_palette)
+    #app.setPalette(dark_palette)
+    #app.setStyleSheet(qdarkstyle.load_stylesheet_pyside2())
+    app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2', palette=DarkPalette))
     w = MyApp(ui_file)
     sys.exit(app.exec_())
 
