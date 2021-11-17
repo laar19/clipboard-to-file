@@ -1,79 +1,76 @@
 # coding: utf-8
 
 import sys
+import qdarkstyle
 
 from PySide2 import QtWidgets
-from PySide2.QtWidgets import QApplication, QDialog
-from PySide2.QtCore import QFile
-#from PySide2.QtCore import QObject, Qt
-from PySide2.QtUiTools import QUiLoader
-import qdarkstyle
-from qdarkstyle.dark.palette import DarkPalette
+from PySide2.QtWidgets import QApplication, QMainWindow
+
+from qdarkstyle.dark.palette  import DarkPalette
 from qdarkstyle.light.palette import LightPalette
 
-# Using PyQt5
-#from PyQt5 import uic, QtWidgets
-#from PyQt5.Qt import QApplication
-
-from functions.functions import *
+from library.functions import *
+from ui.ui_mainwindow  import Ui_MainWindow
 
 appname  = "Clipboard to file"
-authors  = ["Luis Acevedo", "<laar@protonmail.com>"]
-license_ = "Copyright 2020. All code is copyrighted by the respective authors.\n" + appname + " can be redistributed and/or modified under the terms of the GNU GPL versions 3 or by any future license endorsed by " + authors[0] +"." + "\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
-# Spcify user interface location
-if (len(sys.argv) < 2):
-    ui_file = "ui/window.ui"        # Default
-elif (len(sys.argv) == 2):
-    ui_file = sys.argv[1]           # Custom, in order to make and exeutable with pyinstaller
-else:
-    print("Argumento/s inválido/s") # Any other option, error
-    sys.exit()
+about    = appname + " version 2.0\n\nThis program copy every entry of \
+clipboard and\nstore it in a list, then you can save it in a text file"
+    
+authors  = ["Luis Acevedo", "<laar@pm.me>"]
+
+license_ = "Copyright 2020. All code is copyrighted by the respective authors.\n" \
++ appname + " can be redistributed and/or modified under the terms of \
+the GNU GPL versions 3 or by any future license endorsed by " + authors[0] + \
+".\nThis program is distributed in the hope that it will be useful, but \
+WITHOUT ANY WARRANTY; without even the implied warranty of \
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 
 clipboard_list = list()
 
-#class MyApp(QtWidgets.QMainWindow): # Using PyQt5
-class MyApp(QDialog):
-    #def __init__(self): # Using PyQt5
-    def __init__(self, ui_file):
-        super().__init__()
-        self.ui_file = QFile(ui_file)
-        self.ui_file.open(QFile.ReadOnly)
-        
-        # Using PyQty5
-        #super(MyApp, self).__init__()
-        #uic.loadUi(ui_file, self)
-        #self.show()
+class MainWindow(QMainWindow, Ui_MainWindow):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.setupUi(self)
+        self.connectSignalsSlots()
 
-        self.loader = QUiLoader()
-        self.window = self.loader.load(self.ui_file)
-        self.window.show()
-
-        #self.clipboard_qtextbrowser = self.findChild(QtWidgets.QTextBrowser, "clipboard_qtextbrowser") # Show selected files from clipboard
-        self.clipboard_qtextbrowser = self.window.findChild(QtWidgets.QTextBrowser, "clipboard_qtextbrowser") # Show selected files from clipboard
-
-        self.btn_save = self.window.findChild(QtWidgets.QPushButton, "btn_save")       # Save
+    def connectSignalsSlots(self):
+        # Save
         self.btn_save.clicked.connect(self.save_as)
-        self.btn_save.setStyleSheet("background-color: green")
+        self.btn_save.setStyleSheet(
+            "QPushButton { background-color: green; } \
+                QPushButton::hover { \
+                background-color: grey; \
+            }"
+        )
 
-        self.btn_clear = self.window.findChild(QtWidgets.QPushButton, "btn_clear")     # Clear list button
+        # Clear list button
         self.btn_clear.clicked.connect(self.clear)
 
-        self.btn_about = self.window.findChild(QtWidgets.QPushButton, "btn_about")     # About Qt
-        self.btn_about.clicked.connect(self.aboutQt)
+        # About
+        self.actionAbout.triggered.connect(self.about_)
 
-        self.btn_authors = self.window.findChild(QtWidgets.QPushButton, "btn_authors") # Authors
-        self.btn_authors.clicked.connect(self.authors)
+        # About Qt
+        self.actionAbout_Qt.triggered.connect(self.aboutQt)
 
-        self.btn_license = self.window.findChild(QtWidgets.QPushButton, "btn_license") # License
-        self.btn_license.clicked.connect(self.license_)
+        # Authors
+        self.actionAuthors.triggered.connect(self.authors)
 
-        self.btn_change_theme = self.window.findChild(QtWidgets.QPushButton, "btn_change_theme") # License
+        # License
+        self.actionLicense.triggered.connect(self.license_)
+
+        # Change theme
+        self.btn_change_theme.setStyleSheet(
+            "QPushButton { background-color: purple; } \
+                QPushButton::hover { \
+                background-color: grey; \
+            }"
+        )
         self.btn_change_theme.setCheckable(True)
         #self.btn_change_theme.setChecked(True)
         self.btn_change_theme.clicked.connect(self.toggle_theme)
 
-        self.btn_exit = self.window.findChild(QtWidgets.QPushButton, "btn_exit")       # Exit
+        # Exit
         self.btn_exit.clicked.connect(self.exit)
 
         QApplication.clipboard().dataChanged.connect(self.listen_clipboard)
@@ -93,36 +90,35 @@ class MyApp(QDialog):
         self.clipboard_qtextbrowser.setText("")
         clipboard_list.clear()
 
+    def about_(self):
+        QtWidgets.QMessageBox.about(self, "About", about)
+
     def aboutQt(self):
         QtWidgets.QMessageBox.aboutQt(self)
     
     def authors(self):
-        mensaje = authors[0] + " " + authors[1]
-        QtWidgets.QMessageBox.about(self, "authors", mensaje)
+        text = authors[0] + " " + authors[1]
+        QtWidgets.QMessageBox.about(self, "authors", text)
         
     def license_(self):
         QtWidgets.QMessageBox.about(self, "license_", license_)
         
     def toggle_theme(self):
         if not self.btn_change_theme.isChecked():
-            app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2', palette=DarkPalette))
+            app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api="pyside2", palette=DarkPalette))
         else:
-            app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2', palette=LightPalette))
+            app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api="pyside2", palette=LightPalette))
 
     def exit(self):
         sys.exit()
 
-if __name__ == "__main__":    
-    print(appname + " Copyright (C) 2020 " + authors[0] +".\nEste programa viene con ABSOLUTAMENTE NINGUNA GARANTÍA.\nEsto es software libre, y le invitamos a redistribuirlo\nbajo ciertas condiciones.\nPor favor, leer el archivo README.")
+if __name__ == "__main__":
+    
+    print("\n" + appname + " Copyright (C) 2020 " + authors[0] + ".\nEste programa viene con ABSOLUTAMENTE NINGUNA GARANTÍA.\nEsto es software libre, y le invitamos a redistribuirlo\nbajo ciertas condiciones.\nPor favor, leer el archivo README.")
 
     app = QApplication(sys.argv)
-    #app.setPalette(dark_palette)
-    #app.setStyleSheet(qdarkstyle.load_stylesheet_pyside2())
-    app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyside2', palette=DarkPalette))
-    w = MyApp(ui_file)
-    sys.exit(app.exec_())
+    app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api="pyside2", palette=DarkPalette))
 
-    # Using PyQt5
-    #app = QtWidgets.QApplication(sys.argv)
-    #window = MyApp()
-    #app.exec_()
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec_())

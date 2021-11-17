@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>660</width>
-    <height>439</height>
+    <height>465</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,31 +17,17 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>269</x>
       <y>400</y>
-      <width>360</width>
+      <width>371</width>
       <height>30</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="btn_about">
+      <widget class="QPushButton" name="btn_change_theme">
        <property name="text">
-        <string>About Qt</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_authors">
-       <property name="text">
-        <string>Authors</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="btn_license">
-       <property name="text">
-        <string>License</string>
+        <string>Change theme</string>
        </property>
       </widget>
      </item>
@@ -115,19 +101,26 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="btn_change_theme">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>407</y>
-      <width>96</width>
-      <height>21</height>
-     </rect>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>660</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
     </property>
-    <property name="text">
-     <string>Cahnge theme</string>
-    </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionAbout_Qt"/>
+    <addaction name="actionAuthors"/>
+    <addaction name="actionLicense"/>
    </widget>
+   <addaction name="menuHelp"/>
   </widget>
   <action name="actionAutores">
    <property name="text">
@@ -152,6 +145,26 @@
   <action name="actionAcerca_de_Qt">
    <property name="text">
     <string>Acerca de Qt</string>
+   </property>
+  </action>
+  <action name="actionAbout_Qt">
+   <property name="text">
+    <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionAuthors">
+   <property name="text">
+    <string>Authors</string>
+   </property>
+  </action>
+  <action name="actionLicense">
+   <property name="text">
+    <string>License</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
    </property>
   </action>
  </widget>
