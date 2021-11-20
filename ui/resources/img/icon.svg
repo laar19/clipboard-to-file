@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   id="svg74"
+   version="1.1"
+   height="256"
+   width="256"
+   role="img"
+   aria-describedby="desc"
+   aria-labelledby="title"
+   viewBox="0 0 64 64">
+  <metadata
+     id="metadata80">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Clipboard</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs78" />
+  <title
+     id="title64">Clipboard</title>
+  <desc
+     id="desc66">A line styled icon from Orion Icon Library.</desc>
+  <path
+     id="path68"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     d="M20 14h-4v40h32V14h-4"
+     stroke-width="2"
+     stroke-miterlimit="10"
+     stroke="#202020"
+     fill="none"
+     data-name="layer2" />
+  <path
+     id="path70"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     stroke-width="2"
+     stroke-miterlimit="10"
+     stroke="#202020"
+     fill="none"
+     d="M43.1 8H54a2 2 0 0 1 2 2v50a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h10.9"
+     data-name="layer1" />
+  <path
+     id="path72"
+     stroke-linecap="round"
+     stroke-linejoin="round"
+     stroke-width="2"
+     stroke-miterlimit="10"
+     stroke="#202020"
+     fill="none"
+     d="M39 6h-2.1a5 5 0 0 0-9.8 0H25a4.7 4.7 0 0 0-5 5v3h24v-3a4.8 4.8 0 0 0-5-5z"
+     data-name="layer1" />
+  <g
+     id="flowRoot82"
+     style="font-size:37.3333px;font-family:sans-serif"
+     transform="scale(0.25)"
+     aria-label="TEXT
+FILE">
+    <path
+       id="path92"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:37.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
+       d="m 74.559245,74.371745 h 25.083332 v 5.304687 H 90.61914 V 101.58789 H 83.600911 V 79.676432 h -9.041666 z" />
+    <path
+       id="path94"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:37.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
+       d="m 103.25195,74.371745 h 18.94011 v 5.304687 h -11.92188 v 5.067708 h 11.21094 v 5.304687 h -11.21094 v 6.234375 h 12.32292 v 5.304688 h -19.34115 z" />
+    <path
+       id="path96"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:37.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
+       d="m 143.93945,87.697265 9.44271,13.890625 h -7.3099 l -6.36197,-9.296875 -6.3073,9.296875 h -7.34635 l 9.44271,-13.890625 -9.07813,-13.32552 h 7.32813 l 5.96094,8.768228 5.9427,-8.768228 h 7.36459 z" />
+    <path
+       id="path98"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:37.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
+       d="m 154.33007,74.371745 h 25.08334 v 5.304687 h -9.02344 v 21.911458 h -7.01823 V 79.676432 h -9.04167 z" />
+    <path
+       id="path100"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:37.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
+       d="M 77.804036,121.03841 H 96.74414 v 5.30469 H 84.822265 v 5.0677 h 11.210937 v 5.30469 H 84.822265 v 11.53906 h -7.018229 z" />
+    <path
+       id="path102"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:37.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
+       d="m 103.32487,121.03841 h 7.01823 v 27.21614 h -7.01823 z" />
+    <path
+       id="path104"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:37.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
+       d="m 117.25195,121.03841 h 7.01823 v 21.91146 h 12.32292 v 5.30468 h -19.34115 z" />
+    <path
+       id="path106"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:37.3333px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold'"
+       d="m 141.02278,121.03841 h 18.94011 v 5.30469 h -11.92188 v 5.0677 h 11.21094 v 5.30469 h -11.21094 v 6.23438 h 12.32292 v 5.30468 h -19.34115 z" />
+  </g>
+</svg>
