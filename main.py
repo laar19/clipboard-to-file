@@ -3,9 +3,7 @@
 import sys
 import qdarkstyle
 
-#from PySide2 import QtWidgets
-from qtpy import QtWidgets
-#from PySide2.QtWidgets import QApplication, QMainWindow
+from qtpy           import QtWidgets
 from qtpy.QtWidgets import QApplication, QMainWindow
 
 from qdarkstyle.dark.palette  import DarkPalette
