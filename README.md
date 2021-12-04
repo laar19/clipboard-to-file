@@ -21,6 +21,6 @@ https://sourceforge.net/projects/clipboard-to-file/
 4.- Launch the application: __python main.py__   
 
 ## Pyinstaller build
-### Linux
-1.- pyinstaller main-linux.spec   
-2.- (inprogress)...   
+### Linux and windows
+1.- pyinstaller main.py   
+2.- Copy __/ui__ folder into __main__ folder generated   
