@@ -27,7 +27,8 @@ exe = EXE(pyz,
           strip=False,
           upx=True,
           upx_exclude=['qwindows.dll'],
-          console=False )
+          console=False,
+          icon='ui\\resources\\img\\icon.ico' )
 coll = COLLECT(exe,
                a.binaries,
                a.zipfiles,
