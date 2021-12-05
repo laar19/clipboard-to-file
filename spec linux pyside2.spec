@@ -4,10 +4,10 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['/home/usuario01/pruebas/clipboard-to-file'],
+             pathex=['/home/usuario/Desktop/development/clipboard-to-file'],
              binaries=[],
              datas=[],
-             hiddenimports=['PySide2.QtXml'],
+             hiddenimports=['PySide2.QtXml', 'PySide2.QtWidgets'],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
@@ -26,8 +26,7 @@ exe = EXE(pyz,
           bootloader_ignore_signals=False,
           strip=False,
           upx=True,
-          console=False,
-          icon='ui/resources/img/icon.ico' )
+          console=False , icon='ui/resources/img/icon.ico')
 coll = COLLECT(exe,
                a.binaries,
                a.zipfiles,

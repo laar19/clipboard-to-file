@@ -7,7 +7,7 @@
 ## Technical information:
 
 - Developed in python 3.8
-- PySide2 as graphic library
+- PyQt5 as graphic library
 - Distributed under the GNU General Public License (GPLv3)
 
 ## Binaries and installers
@@ -21,9 +21,6 @@ https://sourceforge.net/projects/clipboard-to-file/
 4.- Launch the application: __python main.py__   
 
 ## Pyinstaller build
-### Linux
-1.- pyinstaller main-linux.spec   
-2.- Copy __/ui__ folder into __main__ folder generated   
-### Windows
-1.- pyinstaller main-windows.spec
+### Linux and windows
+1.- pyinstaller main.py   
 2.- Copy __/ui__ folder into __main__ folder generated   
