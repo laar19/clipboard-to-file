@@ -14,7 +14,7 @@ from ui.ui_mainwindow  import Ui_MainWindow
 
 appname  = "Clipboard to file"
 
-about    = appname + " version 2.0\n\nThis program copy every entry of \
+about    = appname + " version 2.0\n\nThis program copy every entry from \
 clipboard and\nstore it in a list, then you can save it in a text file"
     
 authors  = ["Luis Acevedo", "<laar@pm.me>"]
